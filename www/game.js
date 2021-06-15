@@ -81,8 +81,15 @@ function DeleteWinAnimal() {
 }
 
 function ResizeBoardToFitHeight() {
+  //Tính tỉ lệ chiều cao
   let boardHeight = board.clientHeight
-  let ratio = (window.innerHeight / boardHeight).toFixed(3)
+  let hRatio = (window.innerHeight / boardHeight)
+  //Tính tỉ lệ chiều rộng
+  let boardWidth = board.clientWidth
+  let wRatio = (window.innerWidth / boardWidth)
+  //So sánh ratio
+  let ratio = (wRatio < hRatio) ? wRatio : hRatio
+  //Resize
   board.style.transform = `translate(-50%, -50%) scale(${ratio})`
 }
 
