@@ -20,7 +20,12 @@ node index.js
 
 # Chơi game (client)
 - Mở trình duyệt web, truy cập địa chỉ: localhost:8080 hoặc 127.0.0.1:8080 để chơi
-- Để các máy trong mạng LAN chơi cùng nhau, mở cmd và gõ lệnh ipconfig và lấy IPv4 Address. Sau đó gõ địa chỉ <IP>:8080 trên trình duyệt web để chơi cùng nhau
+- Để các máy trong mạng LAN chơi cùng nhau, mở cmd và gõ lệnh
+```bash
+ipconfig
+```
+=> Lấy IPv4, sau đó truy cập IP:8080 trên trình duyệt để chơi.
+**Lưu ý: Port 8080 thay đổi tuỳ theo bạn config trên server**
 
 # Assets
 - Assets được crawl từ game Bầu Cua trên CH Play

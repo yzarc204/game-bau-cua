@@ -83,7 +83,6 @@ function DeleteWinAnimal() {
 function ResizeBoardToFitHeight() {
   let boardHeight = board.clientHeight
   let ratio = (window.innerHeight / boardHeight).toFixed(3)
-  let strRatio = String(ratio)
   board.style.transform = `translate(-50%, -50%) scale(${ratio})`
 }
 
