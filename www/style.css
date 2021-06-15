@@ -13,8 +13,10 @@
     background: url('./assets/Board/board.jpg');
     width: 325px;
     height: 557px;
-    margin: 2.5em auto;
-    position: relative;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 /* ========= ACCOUNT ======== */
 .account-money {

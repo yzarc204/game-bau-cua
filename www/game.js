@@ -1,5 +1,6 @@
 const socket = io()
 /* ========== ELEMENT ========= */
+
 const board = document.querySelector('#board')
 const accountMoney = document.querySelector('#account-money')
 const bowl = document.querySelector('#bowl')
@@ -9,8 +10,9 @@ const time = document.querySelector('#time')
 const win = document.querySelector('#win')
 const animalBtns = document.querySelectorAll('.animal')
 const moneyBtns = document.querySelectorAll('.money')
-const bgAudio = document.querySelector('#bg-audio')
+
 /* ========== VARIABLE AND CONSTANT ========= */
+
 //Money button
 let currentMoneyBtn = moneyBtns.item(0)
 // Shake
@@ -23,7 +25,9 @@ let shakeSoundLoop = null
 //Win audio
 let winAudio = new Audio('./assets/Sound/win.mp3')
 winAudio.volume = 1
+
 /* ========== FUNCTION ========= */
+
 function FindAnimalButtonInNodeList(btnList, animalName) {
   for (let i = 0; i < btnList.length; i++) {
     let btn = btnList.item(i)
@@ -75,10 +79,16 @@ function DeleteWinAnimal() {
     board.removeChild(winAnimal)
   })
 }
-/* ========== SOUND ==========*/
-bgAudio.volume = 0.1
-bgAudio.play()
+
+function ResizeBoardToFitHeight() {
+  let boardHeight = board.clientHeight
+  let ratio = (window.innerHeight / boardHeight).toFixed(3)
+  let strRatio = String(ratio)
+  board.style.transform = `translate(-50%, -50%) scale(${ratio})`
+}
+
 /* ========== EVENT ========= */
+
 animalBtns.forEach(animalBtn => {
   animalBtn.addEventListener('click', e => {
     let animal = animalBtn.getAttribute('data-animal-name')
@@ -94,7 +104,11 @@ moneyBtns.forEach(moneyBtn => {
     moneyBtn.style.top = '40px'
   })
 })
+
+ResizeBoardToFitHeight()
+
 /* ========== SOCKET ========= */
+
 socket.on('putMoney', data => {
   if (data.status) {
     let animalBtn = FindAnimalButtonInNodeList(animalBtns, data.animal)
