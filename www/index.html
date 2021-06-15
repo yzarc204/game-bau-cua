@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Game bầu cua hot nhất 2021</title>
+</head>
+
+<body>
+    <div class="board" id="board">
+        <!-- Account -->
+        <h1 class="account-money" id="account-money"></h1>
+        <!-- Money -->
+        <button class="money" id="money-10" data-money-value="10000"></button>
+        <button class="money" id="money-20" data-money-value="20000"></button>
+        <button class="money" id="money-50" data-money-value="50000"></button>
+        <button class="money" id="money-200" data-money-value="200000"></button>
+        <button class="money" id="money-500" data-money-value="500000"></button>
+        <!-- Shake -->
+        <div id="disk" class="disk"></div>
+        <div class="cube" id="cube1"></div>
+        <div class="cube" id="cube2"></div>
+        <div class="cube" id="cube3"></div>
+        <div class="bowl" id="bowl"></div>
+        <!-- Time -->
+        <h1 class="time" id="time">50</h1>
+        <!-- Win -->
+        <div class="win" id="win"></div>
+        <!-- Animal -->
+        <button class="animal top" id="nai" data-animal-name="nai"></button>
+        <button class="animal top" id="bau" data-animal-name="bau"></button>
+        <button class="animal top" id="ga" data-animal-name="ga"></button>
+        <button class="animal bottom" id="ca" data-animal-name="ca"></button>
+        <button class="animal bottom" id="cua" data-animal-name="cua"></button>
+        <button class="animal bottom" id="tom" data-animal-name="tom"></button>
+    </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

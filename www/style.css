@@ -1,0 +1,197 @@
+/* ========= FONT ======== */
+@font-face {
+    font-family: 'OpenSans';
+    src: url('./assets/Font/OpenSans-ExtraBold.ttf');
+}
+/* ========= MAIN CSS ======== */
+* {
+    padding: 0;
+    margin: 0;
+}
+/* ========= BOARD ======== */
+.board {
+    background: url('./assets/Board/board.jpg');
+    width: 325px;
+    height: 557px;
+    margin: 2.5em auto;
+    position: relative;
+}
+/* ========= ACCOUNT ======== */
+.account-money {
+    font-size: 25px;
+    padding: 5px;
+    color: white;
+}
+/* ========= MONEY ======== */
+.money {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 29px;
+    display: block;
+    border: 0px;
+    cursor: pointer;
+}
+
+#money-10 {
+    background: url('./assets/Money/10k.png');
+    left: 0px;
+    top: 40px;
+}
+
+#money-20 {
+    background: url('./assets/Money/20k.png');
+    left: 71px;
+}
+
+#money-50 {
+    background: url('./assets/Money/50k.png');
+    left: 142px;
+}
+
+#money-200 {
+    background: url('./assets/Money/200k.png');
+    left: 212px;
+}
+
+#money-500 {
+    background: url('./assets/Money/500k.png');
+    left: 283px;
+}
+/* ========= TIME ======== */
+.time {
+    font-family: 'OpenSans';
+    font-size: 72px;
+    display: block;
+    position: absolute;
+    left: 123px;
+    top: 150px;
+    color: transparent;
+    background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+	background: linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+    -webkit-background-clip: text;
+    opacity: 0;
+}
+/* ========= DISK ======== */
+.disk { 
+    background: url('./assets/Board/disk.png');
+    width: 232px;
+    height: 170px;
+    position: absolute;
+    left: 47px;
+    top: 117px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+/* ========= CUBE ======== */
+.cube {   
+    width: 69px;
+    height: 79px;
+    position: absolute;
+    opacity: 0;
+}
+
+#cube1 {
+    left: 93px;
+    top: 133px;
+}
+
+#cube2 {
+    left: 162px;
+    top: 137px;
+}
+
+#cube3 {
+    left: 123px;
+    top: 191px;
+}
+/* ========= BOWL ======== */
+.bowl {
+    background: url('./assets/Board/bowl.png');
+    width: 215px;
+    height: 186px;
+    position: absolute;
+    left: 58px;
+    top: 96px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+/* ========= WIN ======== */
+.win {
+    background: url('./assets/win.png');
+    width: 248px;
+    height: 93px;
+    position: absolute;
+    left: 49px;
+    top: 151px;
+    opacity: 0;
+}
+/* ========= ANIMAL ======== */
+.animal {
+    width: 104px;
+    height: 104px;
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    border: none;
+}
+
+.top {
+    top: 308px;
+}
+
+.bottom {
+    top: 416px;
+}
+
+
+#nai {
+    background: url('./assets/Board/naiBtn.png');
+    left: 0px;
+}
+
+#bau {
+    background: url('./assets/Board/bauBtn.png');
+    left: 111px;
+}
+
+#ga {
+    background: url('./assets/Board/gaBtn.png');
+    left: 222px;
+}
+
+#ca {
+    background: url('./assets/Board/caBtn.png');
+    left: 0px;
+}
+
+#cua {
+    background: url('./assets/Board/cuaBtn.png');
+    left: 111px;
+}
+
+#tom {
+    background: url('./assets/Board/tomBtn.png');
+    left: 222px;
+}
+/* ========= ADDED MONEY ======== */
+.added-money {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    pointer-events: none;
+}
+/* ========= WIN ANIMAL ======== */
+.win-animal {
+    background: url('./assets/Board/win.png');
+    width: 104px;
+    height: 104px;
+    position: absolute;
+    animation: blink 1s step-start 0s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
