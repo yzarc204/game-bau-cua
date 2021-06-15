@@ -9,6 +9,7 @@ const time = document.querySelector('#time')
 const win = document.querySelector('#win')
 const animalBtns = document.querySelectorAll('.animal')
 const moneyBtns = document.querySelectorAll('.money')
+const bgAudio = document.querySelector('#bg-audio')
 /* ========== VARIABLE AND CONSTANT ========= */
 //Money button
 let currentMoneyBtn = moneyBtns.item(0)
@@ -16,6 +17,12 @@ let currentMoneyBtn = moneyBtns.item(0)
 let shakeLoop = null
 let shakeDirection = -1
 const SHAKE_DISTANCE = 50
+let shakeSound = new Audio('./assets/Sound/diceshake.mp3')
+shakeSound.volume = 1
+let shakeSoundLoop = null
+//Win audio
+let winAudio = new Audio('./assets/Sound/win.mp3')
+winAudio.volume = 1
 /* ========== FUNCTION ========= */
 function FindAnimalButtonInNodeList(btnList, animalName) {
   for (let i = 0; i < btnList.length; i++) {
@@ -68,6 +75,9 @@ function DeleteWinAnimal() {
     board.removeChild(winAnimal)
   })
 }
+/* ========== SOUND ==========*/
+bgAudio.volume = 0.1
+bgAudio.play()
 /* ========== EVENT ========= */
 animalBtns.forEach(animalBtn => {
   animalBtn.addEventListener('click', e => {
@@ -124,14 +134,19 @@ socket.on('gameResult', data => {
       cubes.item(i).style.background = `url(./assets/Board/${result[i]}Cube.png)`
     }
     RenderWinAnimal(result)
+    //Âm thanh xóc đĩa
+    shakeSoundLoop = setInterval(() => {
+      shakeSound.play()
+    }, 1000)
     //Xóc đĩa
     shakeLoop = setInterval(() => {
-      //Lắc bát
-      let bowlY = bowl.offsetTop
-      bowl.style.top = bowlY + (SHAKE_DISTANCE * shakeDirection) + 'px'
-      //Lắc đĩa
-      let diskY = disk.offsetTop
-      disk.style.top = diskY + (SHAKE_DISTANCE * shakeDirection) + 'px'
+      if (shakeDirection == 1) {
+        bowl.style.top = '46px'
+        disk.style.top = '67px'
+      } else {
+        bowl.style.top = '96px'
+        disk.style.top = '117px'
+      }
       //Đảo chiều lắc
       shakeDirection *= -1
     }, 100)
@@ -141,6 +156,7 @@ socket.on('gameResult', data => {
 socket.on('gameOver', data => {
   //Ngừng lắc đĩa, đưa bát đĩa về vị trí cũ
   clearInterval(shakeLoop)
+  clearInterval(shakeSoundLoop)
   disk.style.top = '117px'
   bowl.style.top = '96px'
   //Hiển thị kết quả
@@ -160,6 +176,7 @@ socket.on('gameOver', data => {
 socket.on('ganeWin', data => {
   setTimeout(() => {
     win.style.opacity = 1
+    winAudio.play()
   }, 3000)
 })
 
