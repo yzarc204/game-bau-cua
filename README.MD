@@ -25,7 +25,7 @@ node index.js
 ipconfig
 ```
 => Lấy IPv4, sau đó truy cập IP:8080 trên trình duyệt để chơi.
-**Lưu ý: Port 8080 thay đổi tuỳ theo bạn config trên server**
+- **Lưu ý: Port 8080 thay đổi tuỳ theo bạn config trên server**
 
 # Assets
 - Assets được crawl từ game Bầu Cua trên CH Play
