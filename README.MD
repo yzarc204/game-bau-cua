@@ -20,7 +20,8 @@ node index.js
 
 # Chơi game (client)
 - Mở trình duyệt web, truy cập địa chỉ: localhost:8080 hoặc 127.0.0.1:8080 để chơi
+- Để các máy trong mạng LAN chơi cùng nhau, mở cmd và gõ lệnh ipconfig và lấy IPv4 Address. Sau đó gõ địa chỉ <IP>:8080 trên trình duyệt web để chơi cùng nhau
 
 # Assets
 - Assets được crawl từ game Bầu Cua trên CH Play
-- File PSD để lấy toạ độ design UI nằm tại đường dẫn "ưww/assets/design.psd"
+- File PSD để lấy toạ độ design UI nằm tại đường dẫn "www/assets/design.psd"
