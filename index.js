@@ -9,7 +9,7 @@ const server = http.createServer(app)
 const { Server } = require('socket.io')
 const io = new Server(server)
 //Bau Cua
-const BauCua = require('./baucua')
+const BauCua = require('./game/baucua')
 
 /* ========== MAIN ========== */
 let game = new BauCua(io)

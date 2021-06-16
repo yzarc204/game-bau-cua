@@ -27,30 +27,11 @@ let winAudio = new Audio('./assets/Sound/win.mp3')
 winAudio.volume = 1
 
 /* ========== FUNCTION ========= */
-
 function FindAnimalButtonInNodeList(btnList, animalName) {
   for (let i = 0; i < btnList.length; i++) {
     let btn = btnList.item(i)
     if (btn.getAttribute('data-animal-name') == animalName)
       return btn
-  }
-}
-
-function RenderAddedMoney(x, y, money, animal) {
-  //Tạo hình ảnh tiền
-  let addedMoney = document.createElement('div')
-  addedMoney.className = 'added-money money-' + animal
-  let moneyImageFileName = './assets/Money/' + (money / 1000) + 'k.png'
-  addedMoney.style.background = `url('${moneyImageFileName}')`
-  addedMoney.style.left = x + 'px'
-  addedMoney.style.top = y + 'px'
-  //Thêm vào board
-  board.appendChild(addedMoney)
-  //Xoá bớt chip nếu chip nhiều hơn 5
-  let addedMoneys = document.querySelectorAll('.money-' + animal)
-  if (addedMoneys.length > 5) {
-    let removedMoney = addedMoneys.item(0)
-    board.removeChild(removedMoney)
   }
 }
 
@@ -61,15 +42,12 @@ function DeleteAddedMoney() {
   })
 }
 
-function RenderWinAnimal(winAnimals) {
+function RenderWinAnimalOverlay(winAnimals) {
   winAnimals.forEach(animal => {
     let animalBtn = document.querySelector('#' + animal)
-    let winAnimal = document.createElement('div')
-    winAnimal.className = 'win-animal'
-    winAnimal.style.left = animalBtn.offsetLeft + 'px'
-    winAnimal.style.top = animalBtn.offsetTop + 'px'
-    winAnimal.style.opacity = 0
-    board.appendChild(winAnimal)
+    let x = animalBtn.offsetLeft
+    let y = animalBtn.offsetTop
+    let overlay = new WinAnimalOverlay(x, y, board)
   })
 }
 
@@ -118,9 +96,9 @@ ResizeBoardToFitHeight()
 socket.on('putMoney', data => {
   if (data.status) {
     let animalBtn = FindAnimalButtonInNodeList(animalBtns, data.animal)
-    let x = animalBtn.offsetLeft + Math.floor(Math.random() * 44)
-    let y = animalBtn.offsetTop + Math.floor(Math.random() * 44)
-    RenderAddedMoney(x, y, data.money, data.animal)
+    let x = animalBtn.offsetLeft + Math.floor(Math.random() * 60)
+    let y = animalBtn.offsetTop + Math.floor(Math.random() * 60)
+    let addedMoney = new AddedMoney(x, y, data.money, board)
   } else {
     alert(data.msg)
   }
@@ -153,7 +131,7 @@ socket.on('gameResult', data => {
     for (let i = 0; i < 3; i++) {
       cubes.item(i).style.background = `url(./assets/Board/${result[i]}Cube.png)`
     }
-    RenderWinAnimal(result)
+    RenderWinAnimalOverlay(result)
     //Âm thanh xóc đĩa
     shakeSoundLoop = setInterval(() => {
       shakeSound.play()
