@@ -2,7 +2,7 @@
 - Tên game: Bầu Cua
 - Ngôn ngữ lập trình: NodeJS
 - Thư viện: ExpressJS & socket.io
-- Phiên bản: 1.0.0
+- Phiên bản: 1.0
 
 # Config server và game
 - Thay đổi port của server tại dòng 22 của file "index.js"
