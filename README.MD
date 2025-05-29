@@ -1,6 +1,5 @@
 # Giới thiệu
 - Tên game: Bầu Cua
-- Tác giả: Kỳ Viết Tool / Facebook: KA Tự Kỉ
 - Ngôn ngữ lập trình: NodeJS
 - Thư viện: ExpressJS & socket.io
 - Phiên bản: 1.0.0
